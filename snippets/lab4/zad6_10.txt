@@ -1,0 +1,4 @@
+Nastawy PID oraz wartosc kryterium ITSE dla drugiej metody
+Zieglera-Nicholsa to:  Kp=25.976, Ti=0.601, Td=0.150, e=1.512.
+Znalezione experymentalnie nastawy PID
+minimalizujace ITSE to:  Kp=35.000, Ti=0.159, Td=2.684, e=0.018.

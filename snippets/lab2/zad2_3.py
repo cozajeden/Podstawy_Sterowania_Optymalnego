@@ -1,0 +1,1 @@
+G1 = signal.TransferFunction([kp], [T, 1])

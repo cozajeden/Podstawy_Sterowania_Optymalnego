@@ -1,0 +1,4 @@
+Wartosci dla regulatora CHR aperiodycznego, oraz blad ISE to: 
+Kp=7.380, Ti=1.231, Td=0.135, e=4.737.
+Wartosci dla regulatora CHR z przeregulowaniem 20%,
+oraz blad ISE to:  Kp=17.220, Ti=1.724, Td=1.270, e=1.426.

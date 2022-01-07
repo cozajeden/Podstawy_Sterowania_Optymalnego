@@ -1,0 +1,21 @@
+G1 = TransferFunctionContinuous(
+array([1., 0.]),
+array([1.0e+00, 1.2e+01, 1.0e+04]),
+dt: None
+)
+
+G2 = (array([[0.00000000e+00, 1.00000000e+00, 3.63797881e-12]]), array([1.0e+00, 1.2e+01, 1.0e+04]))
+
+sys1 = StateSpaceContinuous(
+array([[ 0.0e+00,  1.0e+00],
+       [-1.0e+04, -1.2e+01]]),
+array([[0.],
+       [1.]]),
+array([[0, 1]]),
+array([[0]]),
+dt: None
+)
+
+sys2 = (array([[-1.2e+01, -1.0e+04],
+       [ 1.0e+00,  0.0e+00]]), array([[1.],
+       [0.]]), array([[1., 0.]]), array([[0.]]))

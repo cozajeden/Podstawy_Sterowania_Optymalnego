@@ -1,0 +1,24 @@
+% Gray text box with shadow
+\usepackage[skins]{tcolorbox}
+
+
+\newenvironment{shbox}
+{\begin{tcolorbox}[enhanced, boxrule=0pt, drop fuzzy shadow southeast]}
+{\end{tcolorbox}}
+
+
+\newcommand{\outputImg}[2]{
+    \begin{shbox}
+        \centering
+        \textbf{Output:} \\
+        \includegraphics[width=#1\textwidth]{#2}
+    \end{shbox}
+}
+
+\newcommand{\outputTxt}[1]{
+    \begin{shbox}
+        \centering
+        \textbf{Output:} \\
+        \lstinputlisting{#1}
+    \end{shbox}
+}

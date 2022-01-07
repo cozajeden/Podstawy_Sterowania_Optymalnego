@@ -1,0 +1,4 @@
+K krytyczne =  43.293293293293296
+Tosc =  1.202020202020202
+Wyznaczone parametry druga metoda Zieglera-Nicholsa to:
+Kp=25.976, Ti=0.601, Td=0.150

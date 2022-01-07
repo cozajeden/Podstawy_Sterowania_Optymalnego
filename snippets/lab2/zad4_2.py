@@ -1,0 +1,5 @@
+x, y = signal.step(sys)
+plt.plot(x, y)
+plt.title('Step response')
+plt.xlabel('time')
+plt.ylabel('$\Theta$')

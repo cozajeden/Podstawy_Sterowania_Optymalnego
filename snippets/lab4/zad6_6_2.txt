@@ -1,0 +1,1 @@
+Wartosci dla najnizszego znalezionego experymentalnie kryterium IAE to:  Kp=50.000, Ti=0.264, Td=5.000, e=1.217.

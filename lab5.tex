@@ -1,0 +1,84 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage{import}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{graphics}
+\usepackage{xcolor}
+\usepackage{bbm}
+\usepackage[charter]{mathdesign}
+\usepackage[hidelinks]{hyperref}
+
+
+\graphicspath{{images/}}
+
+\import{./preambule}{/python_highlights.tex}
+\import{./preambule}{/polish.tex}
+\import{./preambule}{/math_preambule.tex}
+\import{./preambule}{/macros.tex}
+
+\title{
+    \huge Podstawy Sterowania Optymalnego\\Labolatorium 5\\
+    \large Regulator LQR z nieskończonym horyzontem czasowym
+}
+\author{Prowadzący: mgr inż. Krzysztof Hałas\\
+        Wykonał: Ryszard Napierała}
+\date{\today}
+
+\begin{document}
+    \maketitle
+
+    \section*{Zadanie 2}
+    \begin{enumerate}
+        
+        \itemcl[]{Rozwiązać algebraiczne równanie Riccatiego dla dynamiki układu przyjmując
+            jednostkową macierz $Q$ oraz $R=1$. Do znalezienia rozwiązania równania Riccatiego
+            wykorzystać funkcję \emph{scipy.linalg.solve\_continuous\_are}. Wyznaczyć i wypisać wartości
+            wzmocnień $K$.}{lab5.py}{23}{28}
+            \outputTxt{snippets/lab5/zad2_1.txt}
+
+        \itemcl[]{Przygotować funkcję model(x,t) implementującą model dynamiki układu otwartego
+        zgodnie z równaniem. Funkcja powinna przyjmować na wejściu stan układu x oraz
+        aktualną chwilę czasu t}{lab5.py}{31}{39}
+
+        \itemcl[]{Przeprowadzić symulację odpowiedzi obiektu na wymuszenie skokowe w czasie $t \in (0,5)$ s
+        wykorzystując funkcję odeint.}{lab5.py}{42}{52}
+        \outputImg{0.6}{images/lab5/zad2_3}
+
+        \itemcl[]{Zmodyfikować funkcję model(x,t) tak, by sygnał sterujący miał postać $u=-Kx$}{
+            lab5.py}{55}{63}
+
+        \itemcl[]{Przeprowadzić symulację układu dla niezerowych warunków początkowych. Zbadać
+        wpływ macierzy $Q$ oraz $R$ na przebieg odpowiedzi układu.}{lab5.py}{66}{96}
+        \outputImg{0.6}{images/lab5/zad2_5_1}
+        \emph{Czy macierze $Q$ oraz $R$ pozwalają dowolnie kształtować przebieg uchybu regulacji?
+        Czy istnieje jakaś zależność między doborem macierzy $Q$ oraz $R$?}\\
+        Większe wartości $Q$ wydłużają czas regulacji i zmniejszają przeregulowanie, natomiast
+        większe wartości $R$ skracają czas regulacji i zwiększają przeregulowanie.
+        Co jest widoczne na poniższych przebiegach odpowiedzi skokowej układu.
+        \outputImg{1}{images/lab5/zad2_5_2}
+
+        \itemcl[]{Rozszerzyć funkcję model(x,t) o wyznaczanie wartości wskaźnika jakości J. Funkcja
+        model(x,t) powinna wyznaczać pochodną (tj. wyrażenie podcałkowe) wskaźnika J jako
+        dodatkową zmienną stanu – zostanie ona scałkowana przez odeint, a jej wartość zwrócona
+        po zakończeniu symulacji.}{lab5.py}{99}{124}
+        \outputImg{0.6}{images/lab5/zad2_6}
+        \emph{Czy wyznaczona wartość rzeczywiście odpowiada minimalizowanemu wyrażeniu?
+        W jakim horyzoncie czasu została ona wyznaczona?}\\
+        Wartość odpowiada minimalnemu wyrażniu, została zaznaczona na powyższym wykresie.
+    \end{enumerate}
+
+    \section*{Zadanie 3}
+    \begin{enumerate}
+        \itemcl[]{Zmodyfikować funkcję model(x,t) tak, by sygnał sterujący wyznaczany był zgodnie ze
+        schematem przedstawionym na rysunku. Wyznaczyć wzmocnienia regulatora zgodnie z
+        algorytmem $LQR$}{lab5.py}{127}{155}
+        \outputImg{0.6}{images/lab5/zad3_1}
+
+
+        \itemcl[]{Przeprowadzić symulację układu zamkniętego dla wybranej wartości zadanej qd. Zbadać
+        wpływ macierzy $Q$ oraz $R$ na przebieg odpowiedzi układu.}{lab5.py}{158}{185}
+        Wpływ macierzy $Q$ i $R$ jest analogiczny jak w zadaniu 2, podpunkcie 5.
+        \outputImg{1}{images/lab5/zad3_2}
+
+    \end{enumerate}
+
+\end{document}
