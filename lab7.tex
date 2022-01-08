@@ -26,49 +26,56 @@
 \begin{document}
     \maketitle
 
-    \section*{Importy}
-    \pythonl{lab6.py}{1}{7}
-
-    \section*{Zadanie 2}
+    \section*{Zadanie 4}
     \begin{enumerate}
         
-        % 2.1
+        % 4.1
         \itemcl[]{Przygotować funkcję \emph{riccati(p,t)} implementująca różniczkowe równanie Riccatiego.
         Zdefiniować wektor chwil czasu od $t_1$ do $0$ przyjmując $t_1 = 5s$ Wykorzystując funkcję
         odeint wyznaczyć przebieg wartości macierzy $P$ w czasie. Zwrócić uwagę na konieczność
         konwersji macierzy $P$ do postaci wektorowej dla uzyskania zgodności z funkcją odeint.
         Wykorzystać na przykład np.reshape, squeeze oraz \emph{np.tolist.}}{
-            lab6.py}{11}{77}
+            lab7.py}{9}{32}
 
-        % 2.2
+        % 4.2
         \itemcl[]{Wykreślić przebieg elementów macierzy $P(t)$ w czasie. Zweryfikować poprawność wyni-
         ków poprzez porównanie z warunkiem krańcowym.}{
-            lab6.py}{80}{88}
+            lab7.py}{35}{100}
             \outputTxt{snippets/lab6/zad2_2.txt}
             \outputImg{0.6}{images/lab6/zad2_2}
+            % Macierze Q i R pozwalają dowolnie kształtować przebieg uchybu regulacji
+            % Macierz P jest zależna od Q i R
+            % Macierz Q określa funkcję kosztu dla zadanego uchybu regulacji
+            % Macierz R określa funkcję kosztu dla zadanego sterowania
 
-        % 2.3
+        % 4.3
         \itemcl[]{Przygotować funkcję \emph{model(x,t)} implementującą model dynamiki układu otwartego
         zgodnie z równaniem. Funkcja powinna przyjmować na wejściu stan układu $x$ oraz
         aktualną chwilę czasu $t$.}{
-            lab6.py}{91}{99}
+            lab7.py}{103}{121}
+            % P dla nieskończonego horyzontu jest nieskończone
+            % P dla skończonego horyzontu dąży do -S, nie udało mi się dojść do tego dlaczego
 
-        % 2.4
+        % 4.4
         \itemcl[]{Zmodyfikować funkcję \emph{model(x,t)} tak, by wprowadzić do niej wyznaczone wcześniej
         wartości macierzy $P(t)$. Wykorzystać \emph{interpolate.interp1d} w celu określenia wartości
         macierzy $P(t)$ w wybranej chwili czasu.}{
-            lab6.py}{102}{121}
+            lab7.py}{124}{152}
 
-        % 2.5
+        % 4.5
         \itemcl[]{Przeprowadzić symulację odpowiedzi obiektu na wymuszenie skokowe w czasie $t /4\in (0, 5)s$
         wykorzystując funkcję \emph{odeint}.}{
-            lab6.py}{124}{130}
+            lab7.py}{155}{204}
             \outputImg{0.6}{images/lab6/zad2_5}
 
-        % 2.7
+            % Macierze Q i R pozwalają dowolnie kształtować przebieg uchybu regulacji
+            % Macierz Q określa funkcję kosztu dla zadanego uchybu regulacji
+            % Macierz R określa funkcję kosztu dla zadanego sterowania
+
+        % 4.6
         \itemcl[]{Przeprowadzić symulację układu dla niezerowych warunków początkowych.
         Zbadać wpływ macierzy $S$, $Q$ oraz $R$ na przebieg odpowiedzi układu.}{
-            lab6.py}{133}{211}
+            lab7.py}{207}{276}
 
             \outputImg{1}{images/lab6/zad2_7}
 
@@ -76,29 +83,20 @@
             cji? Czy istnieje jakaś zależność między doborem tych macierzy?}\\
             Macierze $Q, R, S$ nie pozwalają dowolnie kształtować przebiegu uchybu regulacji.
             Macierz $S$ jest zależna od macieży $Q$ oraz $S$.
+        % Wyznaczona wartość J odpowiada minimalnemu koszcie regulacji
+        % Została wyznaczona w czasie t \in [0, 5]
 
-        % 2.8
-        \itemcl[]{Rozszerzyć funkcję \emph{model(x,t)} o wyznaczanie wartości wskaźnika jakości $J$. Funkcja
-        \emph{model(x,t)} powinna wyznaczać pochodną (tj. wyrażenie podcałkowe) wskaźnika $J$ jako
-        dodatkową zmienną stanu – zostanie ona scałkowana przez odeint, a jej wartość zwrócona
-        po zakończeniu symulacji}{
-            lab6.py}{214}{244}
+        % 4.7
+        \itemcl[]{Przeprowadzić symulację układu dla niezerowych warunków początkowych.
+        Zbadać wpływ macierzy $S$, $Q$ oraz $R$ na przebieg odpowiedzi układu.}{
+            lab7.py}{279}{291}
 
-            \outputTxt{snippets/lab6/zad2_7.txt}
+            \outputImg{1}{images/lab6/zad2_7}
 
-            \emph{Czy wyznaczona wartość rzeczywiście odpowiada minimalizowanemu wyrażeniu?
-            W jakim horyzoncie czasu została ona wyznaczona?}\\
-            Wartość odpowiada minimalnemu wyrażeniu.\\
-            Została ona wyznaczona w przedziale $t \in (0, 5)$.
-
-        % 2.9
-        \itemcl[]{Powtórzyć symulację dla $t_1 = 2s$ oraz zmiennych wartości nastaw $S$, $Q$, $R$.}{
-            lab6.py}{247}{282}
-            \outputImg{1}{images/lab6/zad2_9}
-
-            \emph{Czy układ osiąga stan ustalony? Jaki teraz wpływ mają poszczególne nastawy?}\\
-            W krótszym czasie układ nie osiąga stanu ustalonego.\\
-            Wpływ nastaw jest identyczny jak w podpunkcie 6.
+            \emph{Czy macierze $S$, $Q$ oraz $R$ pozwalają dowolnie kształtować przebieg uchybu regula-
+            cji? Czy istnieje jakaś zależność między doborem tych macierzy?}\\
+            Macierze $Q, R, S$ nie pozwalają dowolnie kształtować przebiegu uchybu regulacji.
+            Macierz $S$ jest zależna od macieży $Q$ oraz $S$.
             
     \end{enumerate}
 

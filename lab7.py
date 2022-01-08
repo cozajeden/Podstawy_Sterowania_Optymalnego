@@ -98,10 +98,6 @@ res_inf = odeint(
     P0 + x0,
     t,
     (A_of_x, B, Q, R))
-# Macierze Q i R pozwalają dowolnie kształtować przebieg uchybu regulacji
-# Macierz P jest zależna od Q i R
-# Macierz Q określa funkcję kosztu dla zadanego uchybu regulacji
-# Macierz R określa funkcję kosztu dla zadanego sterowania
 
 # 4.3
 concatenate_plots(
@@ -123,8 +119,6 @@ S = solve_continuous_are(
 print('S =\n', S)
 print('P_fin =\n', res_fin[-1, :4].reshape((2, 2)))
 print('P_inf =\n', res_inf[-1, :4].reshape((2, 2)))
-# P dla nieskończonego horyzontu jest nieskończone
-# P dla skończonego horyzontu dąży do -S, nie udało mi się dojść do tego dlaczego
 
 # 4.4
 def show_x(t: np.ndarray, res: np.ndarray, title:str) -> None:
@@ -209,10 +203,6 @@ experiment(
         (infinite riccati)'
 )
 
-# Macierze Q i R pozwalają dowolnie kształtować przebieg uchybu regulacji
-# Macierz Q określa funkcję kosztu dla zadanego uchybu regulacji
-# Macierz R określa funkcję kosztu dla zadanego sterowania
-
 # 4.6
 def riccati_finite_diff_with_J(
         x: np.ndarray,
@@ -284,8 +274,6 @@ concatenate_plots(
     '$J$ function vs time',
     (2, 1)
 )
-# Wyznaczona wartość J odpowiada minimalnemu koszcie regulacji
-# Została wyznaczona w czasie t \in [0, 5]
 
 # 4.7
 t = np.linspace(0, 2, RESOLUTION)
