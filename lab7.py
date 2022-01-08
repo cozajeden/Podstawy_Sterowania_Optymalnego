@@ -70,13 +70,6 @@ def show_P(t: np.ndarray, res: np.ndarray) -> None:
     plt.show()
     plt.close()
 
-def show_x(t: np.ndarray, res: np.ndarray) -> None:
-    plt.plot(t, res[:, 4:])
-    plt.xlim(t[0], t[-1])
-    plt.legend(['$x_1$', '$x_2$'])
-    plt.show()
-    plt.close()
-
 S = solve_continuous_are(
     A_of_x(
         np.array([[0]*2]).T
@@ -106,6 +99,13 @@ res = odeint(
 show_P(t, res)
 
 # 4.3
+def show_x(t: np.ndarray, res: np.ndarray) -> None:
+    plt.plot(t, res[:, 4:])
+    plt.xlim(t[0], t[-1])
+    plt.legend(['$x_1$', '$x_2$'])
+    plt.show()
+    plt.close()
+
 t = np.linspace(0, 10, RESOLUTION)
 x0 = [0, 10]
 
