@@ -26,14 +26,15 @@ def model(
     dxdt2 = -(2*zeta*x2 + np.sqrt(x1))/omega + kp*u/omega**2
     return dxdt1, dxdt2
 
+# 3.4
 t = np.linspace(0, 50, RESOLUTION)
 
 res = odeint(model, (0, 0), t, args=(kp, omega, zeta, u))
 
+# 3.5
 plt.plot(t, res)
 plt.title('step response')
 plt.legend(['$x_1$', '$x_2$'])
 plt.xlabel("t")
 plt.show()
 plt.close()
-# Odpowiedź układu ma charakter liniowych gasnących oscylacji

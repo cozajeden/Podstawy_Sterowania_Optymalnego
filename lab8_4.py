@@ -45,8 +45,6 @@ plt.ylabel("y")
 plt.legend(["$x=1$", "$x=2$", "$x=3$"])
 plt.show()
 plt.close()
-# Zasada superpozycji i skalowania została zachowana.
-# Układ ma charakter liniowy
 
 # 4.5
 def feedback(
@@ -71,4 +69,3 @@ plt.ylabel("y")
 plt.legend(["$x=1$", "$x=2$", "$x=3$"])
 plt.show()
 plt.close()
-# Układ ma charakter liniowy

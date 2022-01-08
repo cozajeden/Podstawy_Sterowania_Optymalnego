@@ -25,5 +25,3 @@ plt.legend(['numeric', 'analytical'])
 plt.xlabel("t")
 plt.show()
 plt.close()
-# Wykresy się pokrywają
-# Zostało użyte całkowanie układu równań różniczkowych zwyczajnych

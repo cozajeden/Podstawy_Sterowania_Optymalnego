@@ -33,6 +33,7 @@ def model(
     dx2 = (tau_m(t, omega, A) - d*x2 - m*g*R*np.sin(x1))/J
     return np.array([dx1, dx2])
 
+# 5.3
 t = np.linspace(0, 30, RESOLUTION)
 
 res = odeint(
@@ -42,11 +43,9 @@ res = odeint(
     (d, m, g, omega, A, J, R, tau_m)
 )
 
-# 5.3
 plt.plot(t, res)
 plt.xlabel('t')
 plt.title('x(t)')
 plt.legend(['$x_1$', '$x_2$'])
 plt.show()
 plt.close()
-# Odpowiedź ma charakter liniowy oscylacyjny.

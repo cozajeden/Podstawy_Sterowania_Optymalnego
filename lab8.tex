@@ -1,0 +1,156 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage{import}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{graphics}
+\usepackage{xcolor}
+\usepackage{bbm}
+\usepackage[charter]{mathdesign}
+\usepackage[hidelinks]{hyperref}
+
+
+\graphicspath{{images/}}
+
+\import{./preambule}{/python_highlights.tex}
+\import{./preambule}{/polish.tex}
+\import{./preambule}{/math_preambule.tex}
+\import{./preambule}{/macros.tex}
+
+\title{
+    \huge Podstawy Sterowania Optymalnego\\Labolatorium 8\\
+    \large Modelowanie układów nieliniowych
+}
+\author{Prowadzący: mgr inż. Krzysztof Hałas\\
+        Wykonał: Ryszard Napierała}
+\date{\today}
+
+\begin{document}
+    \maketitle
+
+    \section*{Zadanie 2}
+    \begin{enumerate}
+        
+        % 2.1
+        \itemcl[]{Zaimportować biblioteki \emph{numpy, scipy.integrate.odeint} oraz \emph{matplotlib.pyplot}.}{
+            lab8_2.py}{2}{5}
+
+        % 2.2
+        \itemcl[]{Utworzyć model wyznaczający wartość $\frac{dy(t)}{dt}$, na podstawie równania.}{
+            lab8_2.py}{8}{11}
+
+        % 2.3
+        \itemcl[]{Utworzyć wektor czasu $t\in(0,10)s$. Dla tak opisanych chwili czasowych wyznaczyć
+        numerycznie rozwiązanie równania, dla zerowych warunków początkowych $(c = 0)$.
+        Wykorzystać polecenie \emph{odeint}.}{
+            lab8_2.py}{14}{16}
+
+        % 2.4
+        \itemcl[]{Utworzyć zmienną, która odpowiada analitycznemu rozwiązaniu. Porównać na
+        wykresie rozwiązanie równania uzyskane numerycznie (\emph{odeint}) i analitycznie.}{
+            lab8_2.py}{19}{27}
+            \outputImg{0.6}{images/lab8/za_2_4}
+            \emph{Czy rozwiązania się pokrywają? Jaki rodzaj numerycznego wyznaczania
+            rozwiązania równania różniczkowego został użyty?}\\
+            Wykresy się pokrywają\\
+            Zostało użyte całkowanie układu równań różniczkowych zwyczajnych
+            
+    \end{enumerate}
+
+    \section*{Zadanie 3}
+    \begin{enumerate}
+        
+        % 3.1
+        \itemcl[]{Zaimportować biblioteki \emph{numpy, scipy.integrate.odeint}
+        oraz \emph{matplotlib.pyplot}.}{
+            lab8_3.py}{2}{5}
+
+        % 3.2
+        \itemcl[]{Przyjąć następujące wartości zmiennych
+        $k_p=2$, $\omega=4$, $\zeta=0.25$, $u(t)=\mathbbm{1}(t)$.}{
+            lab8_3.py}{8}{13}
+
+        % 3.3
+        \itemcl[]{Utworzyć model wyznaczający wartość $\frac{d^2y(t)}{dt^2}$.}{
+            lab8_3.py}{16}{27}
+
+        % 3.4
+        \itemcl[]{Utworzyć wektor czasu $t\in(0, 50)s$. Dla tak opisanych chwili czasowych
+        wyznaczyć numerycznie rozwiązanie równania wykorzystując polecenie \emph{odeint}.}{
+            lab8_3.py}{30}{32}
+
+        % 3.5
+        \itemcl[]{Wyświetlić rozwiązanie równania w funkcji czasu.}{
+            lab8_3.py}{35}{40}
+            \outputImg{0.6}{images/lab8/za_3_3}
+            \emph{Jaki jest charakter odpowiedzi układu na wymuszenie skokowe?}\\
+            Odpowiedź układu ma charakter liniowych gasnących oscylacji
+            
+    \end{enumerate}
+
+    \section*{Zadanie 4}
+    \begin{enumerate}
+        
+        % 4.1
+        \itemcl[]{Przyjąć następujące wartości zmiennych $k_p=2$, $T=2$, $k_ob=4$, $x(t)=\mathbbm{1}(t)$.}{
+            lab8_4.py}{6}{10}
+
+        % 4.2
+        \itemcl[]{Utworzyć funkcję \emph{feedback(t,y)} opisującą rozważany schemat blokowy.}{
+            lab8_4.py}{13}{24}
+
+        % 4.3
+        \itemcl[]{Wyznaczyć odpowiedź układu zamkniętego przez zastosowanie funkcji odeint. Wykreślić
+        jej przebieg w funkcji czasu.}{
+            lab8_4.py}{27}{35}
+            \outputImg{0.6}{images/lab8/za_4_3}
+
+        % 4.4
+        \itemcl[]{Zmieniać wartość sygnału zadanego $x(t)={1,2,3}*\mathbbm{1}(t)$ i obserwować
+        stany ustalone odpowiedzi układu.}{
+            lab8_4.py}{38}{47}
+            \outputImg{0.6}{images/lab8/za_4_4}
+            \emph{Czy zachowana jest zasada superpozycji i skalowania?}\\
+            Zasada superpozycji i skalowania została zachowana.\\\\
+            \emph{Czy układ ma charakter liniowy?}\\
+            Układ ma charakter liniowy
+
+        % 4.5
+        \itemcl[]{Zmienić postać funkcji \emph{feedback(t,y)} tak, aby sygnał sterujący nie był ograniczony.
+        Wyświetlić odpowiedzi układu dla różnych stałowartościowych sygnałów zadanych $x(t)$.}{
+            lab8_4.py}{50}{71}
+            \outputImg{0.6}{images/lab8/za_4_5}
+            \emph{Czy układ ma charakter liniowy?}\\
+            Układ ma charakter liniowy
+            
+    \end{enumerate}
+
+    \section*{Zadanie 5*}
+    \begin{enumerate}
+        
+        % 4.1
+        \item \textbf{Przedstawić równanie opisujące wahadło w postaci dwóch
+        równań pierwszego rzędu.}\\\\
+        \[\ddot{\Theta}=\frac{1}{J}\tau_m
+        -\frac{d}{J}\dot{\Theta}
+        -\frac{mgR}{J}\sin(\Theta)\]
+        \[x_1=\Theta\]
+        \[\dot{x_1}=x_2\]
+        \[\dot{x_2}=\frac{1}{J}\tau_m
+        -\frac{d}{J}x_2
+        -\frac{mgR}{J}\sin(x_1)\]
+
+        % 4.2
+        \itemcl[]{Utworzyć funkcję wyznaczającą $\frac{d^2}{dt^2}\Theta(t)$.
+        Jako sygnał wejściowy przyjąć $\tau_m=A\cos(\omega t)$,
+        gdzie $A=1.5$ a $\omega=0.65$. Wartość współczynnika tłumienia ustawić jako $d=0.5$.}{
+            lab8_5.py}{7}{34}
+
+        % 4.3
+        \itemcl[]{Wyznaczyć i wykreślić rozwiązanie równania różniczkowego.}{
+            lab8_5.py}{37}{51}
+            \outputImg{0.6}{images/lab8/za_5_3}
+            \emph{Jaki jest charakter odpowiedzi układu na sygnał zadany równy funkcji trygonometrycznej?}\\
+            Odpowiedź ma charakter liniowy oscylacyjny.
+            
+    \end{enumerate}
+
+\end{document}
