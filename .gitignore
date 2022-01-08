@@ -1,5 +1,10 @@
 _minted*
-pdf*
-*.pdf
+*.gz
+*.pyg
+*.fls
+*.fdb_latexmk
+*.aux
+*.log
+*.out
 venv*
 to_send*
