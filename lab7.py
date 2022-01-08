@@ -105,6 +105,7 @@ res = odeint(
 
 show_P(t, res)
 
+# 4.3
 t = np.linspace(0, 10, RESOLUTION)
 x0 = [0, 10]
 
