@@ -104,15 +104,15 @@ res_inf = odeint(
 # Macierz R określa funkcję kosztu dla zadanego sterowania
 
 # 4.3
-# concatenate_plots(
-#     show_P,
-#     [
-#         (t, res_fin, 'Finite Riccati'),
-#         (t, res_inf, 'Infinite Riccati')
-#     ],
-#     '$P$ components vs time',
-#     (2, 1)
-# )
+concatenate_plots(
+    show_P,
+    [
+        (t, res_fin, 'Finite Riccati'),
+        (t, res_inf, 'Infinite Riccati')
+    ],
+    '$P$ components vs time',
+    (2, 1)
+)
 
 S = solve_continuous_are(
     A_of_x(
@@ -147,15 +147,15 @@ res_inf = odeint(
     t,
     (A_of_x, B, Q, R))
 
-# concatenate_plots(
-#     show_x,
-#     [
-#         (t, res_fin, 'Finite Riccati'),
-#         (t, res_inf, 'Infinite Riccati')
-#     ],
-#     '$x$ components vs time',
-#     (2, 1)
-# )
+concatenate_plots(
+    show_x,
+    [
+        (t, res_fin, 'Finite Riccati'),
+        (t, res_inf, 'Infinite Riccati')
+    ],
+    '$x$ components vs time',
+    (2, 1)
+)
 
 # 4.5
 x0 = [np.pi/2, 0]
@@ -197,17 +197,17 @@ def experiment(
         (10, 10)
     )
 
-# experiment(
-#     riccati_finite_diff, QR, x0, t,
-#     '$x$ components vs time with different $Q$ and $R$\n\
-#         (finite riccati)'
-# )
+experiment(
+    riccati_finite_diff, QR, x0, t,
+    '$x$ components vs time with different $Q$ and $R$\n\
+        (finite riccati)'
+)
 
-# experiment(
-#     riccati_infinite_diff, QR, x0, t,
-#     '$x$ components vs time with different $Q$ and $R$\n\
-#         (infinite riccati)'
-# )
+experiment(
+    riccati_infinite_diff, QR, x0, t,
+    '$x$ components vs time with different $Q$ and $R$\n\
+        (infinite riccati)'
+)
 
 # Macierze Q i R pozwalają dowolnie kształtować przebieg uchybu regulacji
 # Macierz Q określa funkcję kosztu dla zadanego uchybu regulacji
@@ -275,15 +275,15 @@ res_inf = odeint(
     t,
     (A_of_x, B, Q, R))
 
-# concatenate_plots(
-#     show_J,
-#     [
-#         (t, res_fin, 'Finite Riccati'),
-#         (t, res_inf, 'Infinite Riccati')
-#     ],
-#     '$J$ function vs time',
-#     (2, 1)
-# )
+concatenate_plots(
+    show_J,
+    [
+        (t, res_fin, 'Finite Riccati'),
+        (t, res_inf, 'Infinite Riccati')
+    ],
+    '$J$ function vs time',
+    (2, 1)
+)
 # Wyznaczona wartość J odpowiada minimalnemu koszcie regulacji
 # Została wyznaczona w czasie t \in [0, 5]
 
