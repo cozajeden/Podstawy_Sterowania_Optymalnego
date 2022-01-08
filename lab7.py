@@ -5,9 +5,8 @@ from scipy.integrate.odepack import odeint
 from numpy.linalg import inv
 from scipy.linalg import solve_continuous_are
 
-RESOLUTION = 300
-
 # 4.1
+RESOLUTION = 300
 L = 1 #R
 m = 9
 J = 1
@@ -26,7 +25,7 @@ def A_of_x(x: np.ndarray) -> np.ndarray:
     ]).astype(float)
 
 B = np.array([[0, 1/J]]).T
-R = np.array([[0.1]])
+R = np.array([[0.01]])
 Q = np.array([
     [1, 0],
     [0, 1]
@@ -70,12 +69,6 @@ def show_P(t: np.ndarray, res: np.ndarray) -> None:
     plt.show()
     plt.close()
 
-S = solve_continuous_are(
-    A_of_x(
-        np.array([[0]*2]).T
-    ), B, Q, R
-)
-
 x0 = [0]*2
 P0 = [0]*4
 t = np.linspace(5, 0, RESOLUTION)
@@ -85,10 +78,16 @@ res = odeint(
     t,
     (A_of_x, B, Q, R))
 
-print('S = ', S)
-print('P = ', res[-1, :4].reshape((2, 2)))
-
 show_P(t, res)
+
+S = solve_continuous_are(
+    A_of_x(
+        np.array([0,0]).reshape((2, 1))
+    ), B, Q, R
+)
+
+print('S =\n', S)
+print('P =\n', res[-1, :4].reshape((2, 2)))
 
 res = odeint(
     riccati_infinite_diff,
@@ -98,7 +97,7 @@ res = odeint(
 
 show_P(t, res)
 
-# 4.3
+# 4.4
 def show_x(t: np.ndarray, res: np.ndarray) -> None:
     plt.plot(t, res[:, 4:])
     plt.xlim(t[0], t[-1])
@@ -106,8 +105,8 @@ def show_x(t: np.ndarray, res: np.ndarray) -> None:
     plt.show()
     plt.close()
 
-t = np.linspace(0, 10, RESOLUTION)
-x0 = [0, 10]
+t = np.linspace(0, 5, RESOLUTION)
+x0 = [np.pi*2/3, 0]
 
 res = odeint(
     riccati_finite_diff,
@@ -115,7 +114,6 @@ res = odeint(
     t,
     (A_of_x, B, Q, R))
 
-show_P(t, res)
 show_x(t, res)
 
 res = odeint(
@@ -124,5 +122,4 @@ res = odeint(
     t,
     (A_of_x, B, Q, R))
 
-show_P(t, res)
 show_x(t, res)
