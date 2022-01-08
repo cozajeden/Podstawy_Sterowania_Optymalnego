@@ -88,7 +88,7 @@ P0 = [0]*4
 t = np.linspace(5, 0, RESOLUTION)
 res = odeint(
     riccati_finite_diff,
-    x0 + P0,
+    P0 + x0,
     t,
     (A_of_x, B, Q, R))
 
@@ -99,7 +99,7 @@ show_P(t, res)
 
 res = odeint(
     riccati_infinite_diff,
-    x0 + P0,
+    P0 + x0,
     t,
     (A_of_x, B, Q, R))
 
@@ -111,7 +111,7 @@ x0 = [0, 10]
 
 res = odeint(
     riccati_finite_diff,
-    [0]*4 + x0,
+    P0 + x0,
     t,
     (A_of_x, B, Q, R))
 
@@ -120,7 +120,7 @@ show_x(t, res)
 
 res = odeint(
     riccati_infinite_diff,
-    [0]*4 + x0,
+    P0 + x0,
     t,
     (A_of_x, B, Q, R))
 
